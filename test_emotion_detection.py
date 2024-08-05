@@ -15,8 +15,8 @@ class TestEmotionDetection(unittest.TestCase):
         expected_output = ('joy', 'anger', 'disgust', 'sadness', 'fear')
 
         for i in range(0, len(test_input)):
-            self.assertEqual(emotion_detector(
-                [i])['dominant_emotion'], expected_output[i])
+            self.assertEqual(emotion_detector(test_input[i])[
+                             'dominant_emotion'], expected_output[i])
 
 
 if __name__ == '__main__':
