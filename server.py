@@ -1,3 +1,7 @@
+"""
+Server handler module
+"""
+
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
@@ -6,6 +10,7 @@ app = Flask(__name__)
 
 @app.route("/emotionDetector")
 def detector():
+    """emotionDetector route handler"""
     if request.args.get('textToAnalyze') is not None:
         emotions = emotion_detector(request.args.get('textToAnalyze'))
         dominant_emotion = emotions['dominant_emotion']
@@ -26,8 +31,8 @@ def detector():
             outp = '<strong>Invalid text! Please try again!</strong>'
 
         return outp
-    else:
-        return render_template('index.html')
+
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
